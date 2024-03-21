@@ -6,9 +6,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons/faPlus";
 import { faMugHot } from "@fortawesome/free-solid-svg-icons/faMugHot";
 import { faHouse } from "@fortawesome/free-solid-svg-icons/faHouse";
+import { faUsers } from "@fortawesome/free-solid-svg-icons/faUsers";
 import AllProduct from "./AllProduct";
 import ProductList from "./ProductList";
 import ProductForm from "./ProductForm";
+
+import AllCustomer from "./AllCustomer";
+import CustomerForm from "./CustomerForm";
+
 import Home from "./Home";
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -26,6 +31,15 @@ function ProductStackScreen() {
 			<ProductStack.Screen name="AllProduct" component={AllProduct} />
 			<ProfileStack.Screen name="ProductForm" component={ProductForm} />
 		</ProductStack.Navigator>
+	);
+}
+const CustomerStack = createNativeStackNavigator();
+function CustomerStackScreen() {
+	return (
+		<CustomerStack.Navigator>
+			<CustomerStack.Screen name="AllCustomer" component={AllCustomer} />
+			<ProfileStack.Screen name="CustomerForm" component={CustomerForm} />
+		</CustomerStack.Navigator>
 	);
 }
 const ProfileStack = createNativeStackNavigator();
@@ -64,6 +78,17 @@ export default function Dashboard({ onLogout }) {
 									}
 								/>
 							);
+						} else if (route.name === "Customer") {
+							return (
+								<FontAwesomeIcon
+									icon={faUsers}
+									style={
+										focused
+											? styles.tabIconAcive
+											: styles.tabIcon
+									}
+								/>
+							);
 						} else if (route.name === "Profile") {
 							return (
 								<FontAwesomeIcon
@@ -84,6 +109,7 @@ export default function Dashboard({ onLogout }) {
 			>
 				<Tab.Screen name="Home" component={HomeStackScreen} />
 				<Tab.Screen name="Product" component={ProductStackScreen} />
+				<Tab.Screen name="Customer" component={CustomerStackScreen} />
 				<Tab.Screen name="Profile" component={ProfileStackScreen} />
 			</Tab.Navigator>
 		</NavigationContainer>
