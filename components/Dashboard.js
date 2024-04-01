@@ -38,7 +38,7 @@ function CustomerStackScreen() {
 	return (
 		<CustomerStack.Navigator>
 			<CustomerStack.Screen name="AllCustomer" component={AllCustomer} />
-			<ProfileStack.Screen name="CustomerForm" component={CustomerForm} />
+			<CustomerStack.Screen name="CustomerForm" component={CustomerForm} />
 		</CustomerStack.Navigator>
 	);
 }
